@@ -153,6 +153,16 @@ def git_remote_list(repo_path: str) -> str:
     return f"Error: {str(e)}"
 
 @mcp.tool()
+def git_remote_add(repo_path: str, name: str, url: str) -> str:
+  """Add a remote repository."""
+  try:
+    repo = git.Repo(repo_path)
+    repo.create_remote(name, url)
+    return f"Added remote {name}: {url}"
+  except Exception as e:
+    return f"Error: {str(e)}"
+
+@mcp.tool()
 def git_stash(repo_path: str, action: str = "push", message: str = "") -> str:
   """Stash changes. Actions: push, pop, list, clear."""
   try:
