@@ -6,6 +6,20 @@ import os
 mcp = FastMCP("CustomGit")
 
 @mcp.tool()
+def git_init(repo_path: str) -> str:
+  """Initialize a git repository if it doesn't exist."""
+  try:
+    # Check if already a git repository
+    if os.path.exists(os.path.join(repo_path, '.git')):
+      return f"Repository already exists at {repo_path}"
+    
+    # Initialize new repository
+    git.Repo.init(repo_path)
+    return f"Initialized git repository at {repo_path}"
+  except Exception as e:
+    return f"Error: {str(e)}"
+
+@mcp.tool()
 def git_status(repo_path: str) -> str:
   """Get the current git status of a local repository. 
   Use absolute paths like /Users/name/project."""
