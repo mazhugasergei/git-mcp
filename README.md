@@ -15,6 +15,6 @@ Add this to your MCP configuration:
 ```json
 "git-mcp-server": {
   "command": "uv",
-  "args": ["--directory", "/home/user/web/git-mcp", "run", "main.py"]
+  "args": ["--directory", "/home/user/dotfiles/_/git-mcp", "run", "main.py"]
 }
 ```
